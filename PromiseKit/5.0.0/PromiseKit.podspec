@@ -7,8 +7,7 @@ Pod::Spec.new do |s|
 
   s.source = {
     :git => "https://github.com/mxcl/#{s.name}.git",
-    :tag => s.version,
-    :submodules => true
+    :tag => s.version
   }
 
   s.license = 'MIT'
@@ -18,7 +17,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/mxcl'
   s.authors  = { 'Max Howell' => 'mxcl@me.com' }
   s.documentation_url = 'http://promisekit.org/docs/'
-  s.default_subspecs = 'CorePromise'
+  
   s.requires_arc = true
 
   # CocoaPods requires us to specify the root deployment targets
@@ -33,21 +32,21 @@ Pod::Spec.new do |s|
     'OTHER_SWIFT_FLAGS' => '-DPMKCocoaPods',
   }
 
-  s.subspec 'CorePromise' do |ss|
+  
     hh = Dir['Sources/*.h'] - Dir['Sources/*+Private.h']
 
     cc = Dir['Sources/*.swift'] - ['Sources/SwiftPM.swift']
     cc << 'Sources/{after,AnyPromise,GlobalState,dispatch_promise,hang,join,PMKPromise,when}.m'
     cc += hh
     
-    ss.source_files = cc
-    ss.public_header_files = hh
-    ss.preserve_paths = 'Sources/AnyPromise+Private.h', 'Sources/PMKCallVariadicBlock.m', 'Sources/NSMethodSignatureForBlock.m'
-    ss.frameworks = 'Foundation'
+    s.source_files = cc
+    s.public_header_files = hh
+    s.preserve_paths = 'Sources/AnyPromise+Private.h', 'Sources/PMKCallVariadicBlock.m', 'Sources/NSMethodSignatureForBlock.m'
+    s.frameworks = 'Foundation'
     
-    ss.ios.deployment_target = '8.0'
-    ss.osx.deployment_target = '10.10'
-    ss.watchos.deployment_target = '2.0'
-    ss.tvos.deployment_target = '9.0'
-  end
+    s.ios.deployment_target = '8.0'
+    s.osx.deployment_target = '10.10'
+    s.watchos.deployment_target = '2.0'
+    s.tvos.deployment_target = '9.0'
+  
 end
