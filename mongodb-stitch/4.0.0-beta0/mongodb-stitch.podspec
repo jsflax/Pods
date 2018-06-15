@@ -68,7 +68,7 @@ Pod::Spec.new do |spec|
   #   s.resource_bundle = { 'fail' => 'pod_fail.sh' }
   # end
 
-  pod "mongodb-stitch/core", "~> 4.0"
+  # pod "mongodb-stitch/core", "~> 4.0"
   spec.subspec "core-sdk" do |c|  
     c.source_files = "Core/StitchCoreSDK/Sources/StitchCoreSDK/**/*.swift"
     c.vendored_frameworks = "frameworks/data/Build/Products/Debug-iphonesimulator/MongoSwift.framework"
